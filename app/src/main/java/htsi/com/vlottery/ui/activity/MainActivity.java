@@ -1,6 +1,5 @@
-package htsi.com.vlottery;
+package htsi.com.vlottery.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,12 +10,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class MainActivity extends AppCompatActivity {
+import htsi.com.vlottery.ui.activity.base.BaseActivity;
+import htsi.com.vlottery.ui.activity.home.HomeContainerFragment;
+import htsi.com.vlottery.ui.fragment.base.BaseFragment;
+
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
@@ -47,5 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected BaseFragment hostFragment() {
+        return new HomeContainerFragment();
     }
 }

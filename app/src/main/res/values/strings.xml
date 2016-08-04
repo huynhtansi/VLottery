@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">VLottery</string>
+
+    <string name="tab_home">Trang Chủ</string>
+    <string name="tab_statistic">Thống Kê</string>
+    <string name="tab_rules">Thể lệ</string>
+    <string name="tab_settings">Cài đặt</string>
 </resources>

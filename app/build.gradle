@@ -40,7 +40,7 @@ android {
         versionCode gitCommitCount
         signingConfig signingConfigs.debug_key
 
-        //multiDexEnabled true
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -105,7 +105,7 @@ ext {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //compile 'com.android.support:multidex:+'
+    compile 'com.android.support:multidex:+'
     testCompile 'junit:junit:4.12'
     // Android Support AppCompat
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
