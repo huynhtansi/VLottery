@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "935269804988",
+    "firebase_url": "https://vlottery.firebaseio.com",
+    "project_id": "firebase-vlottery",
+    "storage_bucket": "firebase-vlottery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935269804988:android:d068cd67c3631edb",
+        "android_client_info": {
+          "package_name": "htsi.com.vlottery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935269804988-1nt1oi150a4blaftvmiidtobk6nqq6kb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "htsi.com.vlottery",
+            "certificate_hash": "97AE390C18A694FFFC41CB30B53E01C2306B70C4"
+          }
+        },
+        {
+          "client_id": "935269804988-e6rn6trisco4uhdkttmfjob3b0j5m07m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQaXq6ngPDOI3Ju4iyj6kDBPgKCqKDQss"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935269804988-e6rn6trisco4uhdkttmfjob3b0j5m07m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
