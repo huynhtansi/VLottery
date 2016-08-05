@@ -1,11 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+    </style>
+
+    <style name="AppBaseTheme" parent="AppTheme">
+
+    </style>
+
+    <style name="TextViewStyled_Ball" parent="@android:style/Widget.TextView">
+        <item name="android:background">@drawable/circle_background</item>
+        <item name="android:textColor">#fff</item>
+        <item name="fontPath">fonts/MYRIADPRO-LIGHT_0.OTF</item>
     </style>
 
 </resources>

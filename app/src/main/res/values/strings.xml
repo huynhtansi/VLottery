@@ -5,4 +5,8 @@
     <string name="tab_statistic">Thống Kê</string>
     <string name="tab_rules">Thể lệ</string>
     <string name="tab_settings">Cài đặt</string>
+
+    <string name="current_jackpot">Tổng giải thưởng hiện tại </string>
+    <string name="winning_numbers">Kết quả xổ số gần nhất</string>
+
 </resources>

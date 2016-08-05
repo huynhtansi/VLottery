@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix">
 
 
     <TextView
@@ -9,15 +11,104 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="198dp"
-        android:background="@color/colorAccent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    </FrameLayout>
+        <TextView
+            fontPath="fonts/MYRIADPRO-LIGHT_0.OTF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_jackpot"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textCurrentJackPot"
+            fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="15.790.452.500"
+            android:textSize="40sp" />
+
+        <TextView
+            fontPath="fonts/MYRIADPRO-LIGHT_0.OTF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/winning_numbers"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/TextViewStyled_Ball"
+                android:id="@+id/textBallOne"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="7"
+                android:textSize="24sp" />
+
+            <TextView
+                style="@style/TextViewStyled_Ball"
+                android:id="@+id/textBallTwo"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="10"
+                android:textSize="24sp" />
+
+            <TextView
+                style="@style/TextViewStyled_Ball"
+                android:id="@+id/textBallThree"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="25"
+                android:textSize="24sp" />
+
+            <TextView
+                style="@style/TextViewStyled_Ball"
+                android:id="@+id/textBallFour"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="7"
+                android:textSize="24sp" />
+
+            <TextView
+                style="@style/TextViewStyled_Ball"
+                android:id="@+id/textBallFive"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="27"
+                android:textSize="24sp" />
+
+            <TextView
+                style="@style/TextViewStyled_Ball"
+                android:id="@+id/textBallSix"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="40"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>
