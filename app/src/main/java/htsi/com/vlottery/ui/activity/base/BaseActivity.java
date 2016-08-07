@@ -15,7 +15,6 @@ import com.facebook.FacebookSdk;
 import butterknife.ButterKnife;
 import htsi.com.vlottery.R;
 import htsi.com.vlottery.app.VLotteryApplication;
-import htsi.com.vlottery.di.component.AppComponent;
 import htsi.com.vlottery.ui.fragment.base.BaseFragment;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -27,13 +26,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class BaseActivity extends AppCompatActivity {
 
 
-    protected AppComponent getApplicationComponent() {
-        return ((VLotteryApplication) getApplication()).getAppComponent();
-    }
-
-    protected void setupActivityComponent() {
-        // Implement in child class
-    }
 
     protected BaseFragment hostFragment() {
         // Implement in child class
@@ -50,10 +42,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("BaseActivity", "onCreate");
         FacebookSdk.sdkInitialize(getApplicationContext());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setupActivityComponent();
         if (hostFragment() != null) {
             setContentView(R.layout.activity_base);
         }

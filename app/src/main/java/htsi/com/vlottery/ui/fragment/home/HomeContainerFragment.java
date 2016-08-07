@@ -1,4 +1,4 @@
-package htsi.com.vlottery.ui.activity.home;
+package htsi.com.vlottery.ui.fragment.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -54,6 +54,7 @@ public class HomeContainerFragment extends BaseFragment {
             }
         });
 
+        mViewPageHome.setOffscreenPageLimit(4);
         mViewPageHome.setAdapter(new PageHomeAdapter(getChildFragmentManager()));
         mViewPageHome.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -85,11 +86,11 @@ public class HomeContainerFragment extends BaseFragment {
                 case 0:
                     return HomeFragment.newInstance("Home Fragment");
                 case 1:
-                    return HomeFragment.newInstance("Promotion Fragment");
+                    return new RulesFragment();
                 case 2:
-                    return HomeFragment.newInstance("Gift Fragment");
+                    return new RulesFragment();
                 case 3:
-                    return HomeFragment.newInstance("Setting Fragment");
+                    return new RulesFragment();
                 default:
                     return null;
             }

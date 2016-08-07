@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MissingPrefix">
 
-
-    <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
-
     <LinearLayout
-        android:id="@+id/header"
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:animateLayoutChanges="true"
+        android:visibility="invisible">
 
         <TextView
             fontPath="fonts/MYRIADPRO-LIGHT_0.OTF"
@@ -35,7 +30,7 @@
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:lines="1"
-            android:text="15.790.452.500"
+            android:textColor="#fff"
             android:textSize="40sp" />
 
         <TextView
@@ -46,69 +41,213 @@
             android:text="@string/winning_numbers"
             android:textSize="24sp" />
 
+        <TextView
+            android:id="@+id/textCurrentTimeResult"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/format_last_drawing_date"
+            android:textSize="16sp" />
+
         <LinearLayout
+            android:id="@+id/panelResult"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:layout_marginTop="8dp">
+            android:orientation="horizontal">
 
             <TextView
-                style="@style/TextViewStyled_Ball"
                 android:id="@+id/textBallOne"
+                style="@style/TextViewStyled_Ball"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="7"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/TextViewStyled_Ball"
                 android:id="@+id/textBallTwo"
+                style="@style/TextViewStyled_Ball"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="10"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/TextViewStyled_Ball"
                 android:id="@+id/textBallThree"
+                style="@style/TextViewStyled_Ball"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="25"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/TextViewStyled_Ball"
                 android:id="@+id/textBallFour"
+                style="@style/TextViewStyled_Ball"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="7"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/TextViewStyled_Ball"
                 android:id="@+id/textBallFive"
+                style="@style/TextViewStyled_Ball"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="27"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/TextViewStyled_Ball"
                 android:id="@+id/textBallSix"
+                style="@style/TextViewStyled_Ball"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="40"
                 android:textSize="24sp" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnViewHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_button_bottom_line_selector"
+            android:text="@string/view_history" />
+
+        <TextView
+            fontPath="fonts/MYRIADPRO-LIGHT_0.OTF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/time_next_drawing"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/panelStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textNextTimeDrawing"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/format_next_drawing_date"
+                android:textSize="16sp" />
+
+            <cn.iwgang.countdownview.CountdownView
+                android:id="@+id/cdNextDrawing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                app:isHideTimeBackground="false"
+                app:isShowDay="true"
+                app:isShowHour="true"
+                app:isShowMillisecond="false"
+                app:isShowMinute="true"
+                app:isShowSecond="true"
+                app:suffixGravity="center"
+                app:suffixTextColor="@color/color_white"
+                app:suffixTextSize="18sp"
+                app:timeBgColor="@color/colorAccent"
+                app:timeBgDivisionLineSize="1dp"
+                app:timeBgRadius="3dp"
+                app:timeBgSize="50dp"
+                app:timeTextColor="#FFFFFF"
+                app:timeTextSize="30sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/label_day"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/label_hour"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/label_minute"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/label_second"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textStatus"
+            fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="#fff"
+            android:textSize="32sp"
+            android:text="@string/label_status"
+            android:visibility="invisible"/>
+
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id"/>
+
+    <include
+        layout="@layout/layout_no_internet_connection"
+        android:id="@+id/layoutRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

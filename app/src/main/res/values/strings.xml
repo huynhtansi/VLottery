@@ -6,7 +6,24 @@
     <string name="tab_rules">Thể lệ</string>
     <string name="tab_settings">Cài đặt</string>
 
-    <string name="current_jackpot">Tổng giải thưởng hiện tại </string>
+    <string name="current_jackpot">Jackpot Mega 6/45 ước tính</string>
     <string name="winning_numbers">Kết quả xổ số gần nhất</string>
 
+    <string name="sample_date">Ngày 05&#8211;08&#8211;2016</string>
+    <string name="format_last_drawing_date">Ngày %s</string>
+    <string name="format_next_drawing_date">18h00 - Ngày %s</string>
+    <string name="view_history">Xem kết quả các kỳ trước</string>
+
+    <string name="label_status">ĐANG MỞ THƯỞNG</string>
+    <string name="time_next_drawing">Lần quay số kế tiếp sau:</string>
+    <string name="label_next_time">18h00 - Ngày 06/08/2016</string>
+    <string name="label_day">Ngày</string>
+    <string name="label_hour">Giờ</string>
+    <string name="label_minute">Phút</string>
+    <string name="label_second">Giây</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-2798467803781502/1097151075</string>
+
+    <string name="label_press_to_retry">Nhấn để thử lại</string>
+    <string name="no_internet_connection">Vui lòng kết nối và thử lại!</string>
 </resources>

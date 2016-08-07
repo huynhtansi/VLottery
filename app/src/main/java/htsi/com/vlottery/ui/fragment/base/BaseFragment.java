@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 
 import butterknife.ButterKnife;
-import htsi.com.vlottery.di.base.HasComponent;
 
 /**
  * Created by htsi.
@@ -15,10 +14,6 @@ import htsi.com.vlottery.di.base.HasComponent;
  */
 public class BaseFragment extends Fragment {
     protected void onScreenVisible(){}
-
-    protected <C> C getComponent(Class<C> componentType) {
-        return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
-    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
