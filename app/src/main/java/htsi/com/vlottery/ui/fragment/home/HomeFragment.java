@@ -175,17 +175,22 @@ public class HomeFragment extends BaseFragment {
     private void showRetry() {
         mPbLoading.setVisibility(View.GONE);
         mLayoutRetry.setVisibility(View.VISIBLE);
-        mBtnRetry.setOnClickListener(view -> {
-            if (Utils.isConnectedToInternet(getContext()))
-                loadInternetData();
-            else
-                Toast.makeText(getContext(), getResourceString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
+        mBtnRetry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Utils.isConnectedToInternet(getContext()))
+                    loadInternetData();
+                else
+                    Toast.makeText(getContext(), getResourceString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void loadInternetData() {
 
         mLayoutRetry.setVisibility(View.GONE);
+        if (mMainCotent.getVisibility() == View.VISIBLE)
+            mMainCotent.setVisibility(View.INVISIBLE);
         mPbLoading.setVisibility(View.VISIBLE);
 
         AdRequest adRequest = new AdRequest.Builder().build();

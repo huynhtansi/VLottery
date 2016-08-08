@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <TextView
+        android:id="@+id/textOrder"
+        android:text="Kỳ 1"
+        android:gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
+        android:textSize="24sp"
+         />
+
+    <LinearLayout
+        android:id="@+id/panelResult"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@id/textOrder">
+
+        <TextView
+            android:id="@+id/textBallOne"
+            style="@style/TextViewStyled_Ball"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:id="@+id/textBallTwo"
+            style="@style/TextViewStyled_Ball"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textBallThree"
+            style="@style/TextViewStyled_Ball"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textBallFour"
+            style="@style/TextViewStyled_Ball"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textBallFive"
+            style="@style/TextViewStyled_Ball"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textBallSix"
+            style="@style/TextViewStyled_Ball"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/sample_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textOrder"
+        android:layout_marginLeft="8dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

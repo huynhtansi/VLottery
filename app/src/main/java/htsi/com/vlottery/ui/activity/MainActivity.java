@@ -19,6 +19,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected BaseFragment hostFragment() {
-        return new HomeContainerFragment();
+        return new HomeFragment();
     }
 }
