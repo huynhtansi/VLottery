@@ -123,6 +123,7 @@ dependencies {
     // Google Firebase
     compile "com.google.firebase:firebase-database:${playServiceLibVersion}"
     compile "com.google.firebase:firebase-ads:${playServiceLibVersion}"
+    compile 'com.firebaseui:firebase-ui-database:0.4.3'
 
 
     // Utilities

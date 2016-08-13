@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingPrefix"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="80dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="8dp"
+              tools:ignore="MissingPrefix">
 
     <TextView
-        android:id="@+id/textOrder"
-        android:text="Kỳ 1"
-        android:gravity="center"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@color/colorPrimary"
+        android:id="@+id/textPeriodNo"
         fontPath="fonts/MYRIADPRO-SEMIBOLD.OTF"
-        android:textSize="24sp"
-         />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:textColor="@color/colorAccent"
+        android:layout_marginLeft="4dp"
+        />
 
     <LinearLayout
         android:id="@+id/panelResult"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_toRightOf="@id/textOrder">
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textBallOne"
             style="@style/TextViewStyled_Ball"
             android:layout_width="48dp"
             android:layout_height="match_parent"
@@ -35,53 +33,48 @@
             />
 
         <TextView
-            android:id="@+id/textBallTwo"
             style="@style/TextViewStyled_Ball"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
         <TextView
-            android:id="@+id/textBallThree"
             style="@style/TextViewStyled_Ball"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
         <TextView
-            android:id="@+id/textBallFour"
             style="@style/TextViewStyled_Ball"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
         <TextView
-            android:id="@+id/textBallFive"
             style="@style/TextViewStyled_Ball"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
         <TextView
-            android:id="@+id/textBallSix"
             style="@style/TextViewStyled_Ball"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
     </LinearLayout>
 
     <TextView
-        android:text="@string/sample_date"
+        android:id="@+id/textDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/textOrder"
-        android:layout_marginLeft="8dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="1dp"/>
 
-</RelativeLayout>
+</LinearLayout>

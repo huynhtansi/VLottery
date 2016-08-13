@@ -26,4 +26,7 @@
 
     <string name="label_press_to_retry">Nhấn để thử lại</string>
     <string name="no_internet_connection">Vui lòng kết nối và thử lại!</string>
+
+    <string name="format_period_history">Kỳ #%04d</string>
+    <string name="format_date_history">Mở thưởng ngày %s</string>
 </resources>

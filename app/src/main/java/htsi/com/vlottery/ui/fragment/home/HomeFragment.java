@@ -20,8 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,13 +27,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
+import butterknife.OnClick;
 import cn.iwgang.countdownview.CountdownView;
 import htsi.com.vlottery.R;
 import htsi.com.vlottery.app.VLotteryApplication;
 import htsi.com.vlottery.data.model.HomeInfo;
+import htsi.com.vlottery.ui.activity.HistoryActivity;
 import htsi.com.vlottery.ui.fragment.base.BaseFragment;
 import htsi.com.vlottery.utils.Utils;
 
@@ -60,9 +58,6 @@ public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.cdNextDrawing)
     CountdownView mCountDown;
-
-    @BindView(R.id.adView)
-    AdView adView;
 
     @BindView(R.id.textCurrentJackPot)
     TextView mTextCurrentJackPot;
@@ -132,6 +127,11 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    @OnClick(R.id.btnViewHistory)
+    public void onViewHistory(View pView) {
+        HistoryActivity.openHistoryActivity(getContext());
+    }
+
     private void setupUI() {
         mTextCurrentJackPot.setText(mHomeInfo.getJackpot());
 
@@ -192,9 +192,6 @@ public class HomeFragment extends BaseFragment {
         if (mMainCotent.getVisibility() == View.VISIBLE)
             mMainCotent.setVisibility(View.INVISIBLE);
         mPbLoading.setVisibility(View.VISIBLE);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         Query homeQuery = database.child("home");

@@ -8,12 +8,12 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class HomeInfo {
 
-    public String jackpot;
-    public String lastResult;
-    public String lastTimeResult;
-    public String status;
-    public String nextTimeResult;
-    public int rollingBall;
+    private String jackpot;
+    private String lastResult;
+    private String lastTimeResult;
+    private String status;
+    private String nextTimeResult;
+    private int rollingBall;
 
     public HomeInfo() {}
 
