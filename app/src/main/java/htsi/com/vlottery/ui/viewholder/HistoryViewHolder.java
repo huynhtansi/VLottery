@@ -35,10 +35,9 @@ public class HistoryViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Context pContext, History pHistory, int position) {
         mTextPeriodNo.setText(pContext.getString(R.string.format_period_history, position));
-        mTextDate.setText(pContext.getString(R.string.format_date_history, pHistory.getDate()));
-
-        if (pHistory.getResult() != null) {
-            String balls[] = pHistory.getResult().split("-");
+        mTextDate.setText(pContext.getString(R.string.format_date_history, pHistory.date));
+        if (pHistory.result != null) {
+            String balls[] = pHistory.result.split("-");
             for (int i=0; i<mPanelResult.getChildCount(); i++) {
                 View view = mPanelResult.getChildAt(i);
                 ((TextView)view).setText(balls[i]);

@@ -45,7 +45,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release_key
         }
@@ -73,9 +73,7 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/services/javax.annotation.processing.Processor'
-        exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
-        exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
+        exclude 'LICENSE.txt'
     }
 }
 

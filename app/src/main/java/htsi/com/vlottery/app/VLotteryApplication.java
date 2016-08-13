@@ -1,7 +1,6 @@
 package htsi.com.vlottery.app;
 
 import android.app.Application;
-import android.support.multidex.MultiDexApplication;
 
 import com.google.android.gms.ads.MobileAds;
 

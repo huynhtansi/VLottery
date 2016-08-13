@@ -20,6 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +34,7 @@ import butterknife.OnClick;
 import cn.iwgang.countdownview.CountdownView;
 import htsi.com.vlottery.R;
 import htsi.com.vlottery.app.VLotteryApplication;
-import htsi.com.vlottery.data.model.HomeInfo;
+import htsi.com.vlottery.data.model.Home;
 import htsi.com.vlottery.ui.activity.HistoryActivity;
 import htsi.com.vlottery.ui.fragment.base.BaseFragment;
 import htsi.com.vlottery.utils.Utils;
@@ -87,7 +89,10 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.btnRetry)
     Button mBtnRetry;
 
-    private HomeInfo mHomeInfo;
+    @BindView(R.id.adView)
+    AdView adView;
+
+    private Home mHome;
     private NetworkChangeReceiver mReceiver;
 
     public static HomeFragment newInstance(String title) {
@@ -118,7 +123,7 @@ public class HomeFragment extends BaseFragment {
 
         if (!Utils.isConnectedToInternet(getContext())) {
             restoreFromSharedPreferences();
-            if (mHomeInfo != null)
+            if (mHome != null)
                 setupUI();
             else
                 showRetry();
@@ -133,21 +138,24 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setupUI() {
-        mTextCurrentJackPot.setText(mHomeInfo.getJackpot());
+        mTextCurrentJackPot.setText(mHome.jackpot);
 
-        String balls[] = mHomeInfo.getLastResult().split("-");
-        for (int i=0; i<mPanelResult.getChildCount(); i++) {
-            View view = mPanelResult.getChildAt(i);
-            ((TextView)view).setText(balls[i]);
+        if (mHome.lastResult != null) {
+            String balls[] = mHome.lastResult.split("-");
+            for (int i=0; i<mPanelResult.getChildCount(); i++) {
+                View view = mPanelResult.getChildAt(i);
+                ((TextView)view).setText(balls[i]);
+            }
         }
 
-        mTextCurrentTimeResult.setText(String.format(getResourceString(R.string.format_last_drawing_date), mHomeInfo.getLastTimeResult()));
-        mTextNextTimeDrawing.setText(String.format(getResourceString(R.string.format_next_drawing_date), mHomeInfo.getNextTimeResult()));
 
-        long nextTime = Utils.convertDateString(mHomeInfo.getNextTimeResult()) + 18*60*60*1000 - System.currentTimeMillis();
+        mTextCurrentTimeResult.setText(String.format(getResourceString(R.string.format_last_drawing_date), mHome.lastTimeResult));
+        mTextNextTimeDrawing.setText(String.format(getResourceString(R.string.format_next_drawing_date), mHome.nextTimeResult));
+
+        long nextTime = Utils.convertDateString(mHome.nextTimeResult) + 18*60*60*1000 - System.currentTimeMillis();
         mCountDown.start(nextTime);
 
-        String status = mHomeInfo.getStatus();
+        String status = mHome.status;
         if (!status.equals("idle")) {
             mPanelStatus.setVisibility(View.GONE);
             mTextStatus.setVisibility(View.VISIBLE);
@@ -188,6 +196,9 @@ public class HomeFragment extends BaseFragment {
 
     private void loadInternetData() {
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
         mLayoutRetry.setVisibility(View.GONE);
         if (mMainCotent.getVisibility() == View.VISIBLE)
             mMainCotent.setVisibility(View.INVISIBLE);
@@ -199,9 +210,9 @@ public class HomeFragment extends BaseFragment {
         homeQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mHomeInfo = dataSnapshot.getValue(HomeInfo.class);
+                mHome = dataSnapshot.getValue(Home.class);
                 setupUI();
-            }
+           }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -212,7 +223,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onStop() {
         super.onStop();
-        if (mHomeInfo != null)
+        if (mHome != null)
             saveToSharedPreference();
         getContext().unregisterReceiver(mReceiver);
     }
@@ -221,20 +232,20 @@ public class HomeFragment extends BaseFragment {
         SharedPreferences preferences = getContext().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if (Utils.isValidString(mHomeInfo.getJackpot()))
-            editor.putString(KEY_CURRENT_JACKPOT, mHomeInfo.getJackpot());
+        if (Utils.isValidString(mHome.jackpot))
+            editor.putString(KEY_CURRENT_JACKPOT, mHome.jackpot);
 
-        if (Utils.isValidString(mHomeInfo.getLastResult()))
-            editor.putString(KEY_LAST_RESULT, mHomeInfo.getLastResult());
+        if (Utils.isValidString(mHome.lastResult))
+            editor.putString(KEY_LAST_RESULT, mHome.lastResult);
 
-        if (Utils.isValidString(mHomeInfo.getLastTimeResult()))
-            editor.putString(KEY_LAST_TIME_RESULT, mHomeInfo.getLastTimeResult());
+        if (Utils.isValidString(mHome.lastTimeResult))
+            editor.putString(KEY_LAST_TIME_RESULT, mHome.lastTimeResult);
 
-        if (Utils.isValidString(mHomeInfo.getNextTimeResult()))
-            editor.putString(KEY_NEXT_TIME_RESULT, mHomeInfo.getNextTimeResult());
+        if (Utils.isValidString(mHome.nextTimeResult))
+            editor.putString(KEY_NEXT_TIME_RESULT, mHome.nextTimeResult);
 
-        if (Utils.isValidString(mHomeInfo.getStatus()))
-            editor.putString(KEY_STATUS, mHomeInfo.getStatus());
+        if (Utils.isValidString(mHome.status))
+            editor.putString(KEY_STATUS, mHome.status);
 
         editor.apply();
     }
@@ -249,12 +260,7 @@ public class HomeFragment extends BaseFragment {
             String nextTimeResult = preferences.getString(KEY_NEXT_TIME_RESULT, "");
             String status = preferences.getString(KEY_STATUS, "idle");
 
-            mHomeInfo = new HomeInfo();
-            mHomeInfo.setStatus(status);
-            mHomeInfo.setJackpot(currentJackPot);
-            mHomeInfo.setLastResult(lastResult);
-            mHomeInfo.setLastTimeResult(lastTimeResult);
-            mHomeInfo.setNextTimeResult(nextTimeResult);
+            mHome = new Home(currentJackPot, lastResult, lastTimeResult, status, nextTimeResult);
         }
     }
 

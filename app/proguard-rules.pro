@@ -15,3 +15,14 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keepattributes Signature
+-keepattributes *Annotation*
+
+-keepclassmembers class htsi.com.vlottery.data.model.** {
+  *;
+}
+
+-keepclassmembers class htsi.com.vlottery.ui.viewholder.** {
+  *;
+}
+

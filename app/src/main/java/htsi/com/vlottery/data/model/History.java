@@ -10,35 +10,14 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class History {
 
-    private String mPeriod;
-    private String date;
-    private String result;
+    public String date;
+    public String result;
 
-    public History() {
 
-    }
+    public History() {}
 
-    public String getPeriod() {
-        return mPeriod;
-    }
-
-    public void setPeriod(String pPeriod) {
-        mPeriod = pPeriod;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String pResult) {
-        result = pResult;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String pDate) {
-        date = pDate;
+    public History(String date, String result) {
+        this.date = date;
+        this.result = result;
     }
 }
